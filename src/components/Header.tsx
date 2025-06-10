@@ -26,15 +26,17 @@ const Header: React.FC = () => {
   const textColor = isHomePage && !isScrolled ? 'text-white' : 'text-primary-black';
 
   return (
-    <header className={headerClasses}>
+    <header className={headerClasses} role="banner">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-3" aria-label="DetailMoto Home">
             <img 
               src="/image.png" 
               alt="DetailMoto Logo" 
               className="w-10 h-10 rounded-full object-cover"
+              width="40"
+              height="40"
             />
             <div>
               <h1 className={`text-2xl font-bold ${textColor}`}>DetailMoto</h1>
@@ -43,36 +45,41 @@ const Header: React.FC = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-8" aria-label="Main navigation">
             <Link
               to="/"
               className={`${textColor} hover:text-primary-orange transition-colors font-medium`}
+              aria-current={location.pathname === '/' ? 'page' : undefined}
             >
               Home
             </Link>
             <Link
               to="/services"
               className={`${textColor} hover:text-primary-orange transition-colors font-medium`}
+              aria-current={location.pathname === '/services' ? 'page' : undefined}
             >
               Services
             </Link>
             <Link
               to="/about"
               className={`${textColor} hover:text-primary-orange transition-colors font-medium`}
+              aria-current={location.pathname === '/about' ? 'page' : undefined}
             >
               About
             </Link>
             <Link
               to="/gallery"
               className={`${textColor} hover:text-primary-orange transition-colors font-medium`}
+              aria-current={location.pathname === '/gallery' ? 'page' : undefined}
             >
               Gallery
             </Link>
             <Link
               to="/contact"
               className="bg-primary-orange text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium flex items-center space-x-2"
+              aria-label="Contact us"
             >
-              <Phone className="w-4 h-4" />
+              <Phone className="w-4 h-4" aria-hidden="true" />
               <span>Contact Us</span>
             </Link>
           </nav>
@@ -81,19 +88,28 @@ const Header: React.FC = () => {
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className={`md:hidden ${textColor} p-2`}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMenuOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden bg-white shadow-lg rounded-lg mt-2 py-4">
+          <div 
+            id="mobile-menu"
+            className="md:hidden bg-white shadow-lg rounded-lg mt-2 py-4"
+            role="navigation"
+            aria-label="Mobile navigation"
+          >
             <nav className="flex flex-col space-y-4 px-4">
               <Link
                 to="/"
                 className="text-primary-black hover:text-primary-orange transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
+                aria-current={location.pathname === '/' ? 'page' : undefined}
               >
                 Home
               </Link>
@@ -101,6 +117,7 @@ const Header: React.FC = () => {
                 to="/services"
                 className="text-primary-black hover:text-primary-orange transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
+                aria-current={location.pathname === '/services' ? 'page' : undefined}
               >
                 Services
               </Link>
@@ -108,6 +125,7 @@ const Header: React.FC = () => {
                 to="/about"
                 className="text-primary-black hover:text-primary-orange transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
+                aria-current={location.pathname === '/about' ? 'page' : undefined}
               >
                 About
               </Link>
@@ -115,6 +133,7 @@ const Header: React.FC = () => {
                 to="/gallery"
                 className="text-primary-black hover:text-primary-orange transition-colors font-medium"
                 onClick={() => setIsMenuOpen(false)}
+                aria-current={location.pathname === '/gallery' ? 'page' : undefined}
               >
                 Gallery
               </Link>
@@ -122,8 +141,9 @@ const Header: React.FC = () => {
                 to="/contact"
                 className="bg-primary-orange text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium flex items-center justify-center space-x-2"
                 onClick={() => setIsMenuOpen(false)}
+                aria-label="Contact us"
               >
-                <Phone className="w-4 h-4" />
+                <Phone className="w-4 h-4" aria-hidden="true" />
                 <span>Contact Us</span>
               </Link>
             </nav>
