@@ -24,7 +24,7 @@ export const useForm = <T extends Record<string, any>>(initialValues: T, validat
     return newErrors;
   }, [validationRules]);
 
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setValues(prev => ({ ...prev, [name]: value }));
     
@@ -37,7 +37,8 @@ export const useForm = <T extends Record<string, any>>(initialValues: T, validat
     }
   }, [validationRules]);
 
-  const handleSubmit = useCallback(async (onSubmit: (values: T) => Promise<void>) => {
+  const handleSubmit = useCallback(async (event: React.FormEvent, onSubmit: (values: T) => Promise<void>) => {
+    event.preventDefault();
     setIsSubmitting(true);
     const validationErrors = validate(values);
     

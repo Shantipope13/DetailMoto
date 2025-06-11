@@ -5,10 +5,15 @@ import { services } from '../data/services';
 
 const BookingPage: React.FC = () => {
   const handleBookingSubmit = async (bookingData: any) => {
-    // TODO: Implement actual booking submission logic
-    console.log('Booking data:', bookingData);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      console.log('Booking data:', bookingData);
+      return Promise.resolve();
+    } catch (error) {
+      console.error('Booking failed:', error);
+      return Promise.reject(error);
+    }
   };
 
   return (
