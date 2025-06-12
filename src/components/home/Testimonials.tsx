@@ -28,13 +28,14 @@ const Testimonials: React.FC = () => {
 
   return (
     <section className="py-24 bg-white">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold text-primary-black mb-6 leading-tight">
+          {/* Main Title - 36px+ for section titles */}
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-black mb-8 leading-tight">
             What Our Clients Say
           </h2>
-          <div className="flex items-center justify-center space-x-3 mb-6">
+          <div className="flex items-center justify-center space-x-4 mb-8">
             <div className="flex text-yellow-400">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-7 h-7 fill-current" />
@@ -42,27 +43,30 @@ const Testimonials: React.FC = () => {
             </div>
             <span className="text-2xl font-semibold text-primary-black">5.0 Average Rating</span>
           </div>
-          <p className="text-2xl text-gray-700 leading-relaxed">
+          
+          {/* Subtitle - 20-24px for subheadings */}
+          <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
             Based on 200+ reviews from satisfied customers
           </p>
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-gray-light rounded-xl p-10 shadow-lg hover:shadow-xl transition-all duration-300 relative"
+              className="bg-gray-light rounded-xl p-10 lg:p-12 shadow-lg hover:shadow-xl transition-all duration-300 relative"
             >
-              <Quote className="w-10 h-10 text-primary-orange mb-6" />
+              <Quote className="w-12 h-12 text-primary-orange mb-8" />
               
-              <div className="flex text-yellow-400 mb-6">
+              <div className="flex text-yellow-400 mb-8">
                 {[...Array(testimonial.rating)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-current" />
                 ))}
               </div>
               
-              <p className="text-lg text-gray-800 mb-8 leading-relaxed font-medium">
+              {/* Testimonial Text - 16px for body */}
+              <p className="text-lg text-gray-800 mb-10 leading-relaxed font-medium">
                 "{testimonial.text}"
               </p>
               
@@ -70,7 +74,7 @@ const Testimonials: React.FC = () => {
                 <img
                   src={testimonial.image}
                   alt={testimonial.name}
-                  className="w-14 h-14 rounded-full object-cover mr-4"
+                  className="w-16 h-16 rounded-full object-cover mr-4"
                 />
                 <div>
                   <div className="font-bold text-primary-black text-lg">
@@ -86,11 +90,11 @@ const Testimonials: React.FC = () => {
         </div>
 
         {/* Additional Reviews Link */}
-        <div className="text-center mt-16">
-          <p className="text-xl text-gray-700 mb-6">
+        <div className="text-center mt-20">
+          <p className="text-xl text-gray-700 mb-8">
             See more reviews on Google and Facebook
           </p>
-          <div className="flex justify-center space-x-8">
+          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-8">
             <button className="text-primary-orange font-semibold text-lg hover:text-orange-600 transition-colors">
               Google Reviews →
             </button>

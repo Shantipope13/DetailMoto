@@ -27,21 +27,24 @@ const PortfolioPreview: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-light">
-      <div className="container mx-auto px-4">
+    <section className="py-24 bg-gray-light">
+      <div className="container mx-auto px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex items-center justify-between mb-12">
+        <div className="flex items-center justify-between mb-16">
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold text-primary-black mb-4">
+            {/* Main Title - 36px+ for section titles */}
+            <h2 className="text-4xl md:text-5xl font-bold text-primary-black mb-6">
               Featured Work
             </h2>
-            <p className="text-xl text-gray-600">
+            
+            {/* Subtitle - 20-24px for subheadings */}
+            <p className="text-xl md:text-2xl text-gray-600">
               See the transformation we've achieved for our clients
             </p>
           </div>
           <Link
             to="/gallery"
-            className="hidden md:flex items-center space-x-2 text-primary-orange font-semibold hover:text-orange-600 transition-colors"
+            className="hidden md:flex items-center space-x-3 text-primary-orange font-semibold text-lg hover:text-orange-600 transition-colors"
           >
             <span>View All Work</span>
             <ArrowRight className="w-5 h-5" />
@@ -49,7 +52,7 @@ const PortfolioPreview: React.FC = () => {
         </div>
 
         {/* Portfolio Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {portfolioItems.map((item, index) => (
             <div
               key={index}
@@ -63,9 +66,9 @@ const PortfolioPreview: React.FC = () => {
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <div className="text-sm text-primary-orange mb-1">{item.category}</div>
-                  <h3 className="font-bold">{item.title}</h3>
+                <div className="absolute bottom-6 left-6 right-6 text-white">
+                  <div className="text-sm text-primary-orange mb-2">{item.category}</div>
+                  <h3 className="text-lg font-bold">{item.title}</h3>
                 </div>
               </div>
             </div>
@@ -73,10 +76,10 @@ const PortfolioPreview: React.FC = () => {
         </div>
 
         {/* Mobile CTA */}
-        <div className="text-center mt-8 md:hidden">
+        <div className="text-center mt-12 md:hidden">
           <Link
             to="/gallery"
-            className="bg-primary-orange text-white px-8 py-4 rounded-lg font-semibold hover:bg-orange-600 transition-colors inline-flex items-center space-x-2"
+            className="bg-primary-orange text-white px-8 py-4 rounded-lg font-semibold hover:bg-orange-600 transition-colors inline-flex items-center space-x-3"
           >
             <span>View All Work</span>
             <ArrowRight className="w-5 h-5" />

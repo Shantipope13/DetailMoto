@@ -97,27 +97,27 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 text-center relative z-10">
+      <div className="container mx-auto px-6 lg:px-8 text-center relative z-10">
         <div className="max-w-5xl mx-auto">
           {/* Badge */}
-          <div className="inline-flex items-center space-x-2 bg-primary-orange/10 text-primary-orange px-6 py-3 rounded-full mb-8 animate-fade-in">
+          <div className="inline-flex items-center space-x-3 bg-primary-orange/10 text-primary-orange px-6 py-3 rounded-full mb-8 animate-fade-in">
             <Shield className="w-5 h-5" />
             <span className="text-base font-medium">Certified Artdeshine Graphene Installer</span>
           </div>
 
-          {/* Main Heading */}
-          <h1 className="text-6xl md:text-8xl font-bold text-white mb-8 animate-slide-up leading-tight">
+          {/* Main Heading - 48px+ for hero titles */}
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 animate-slide-up leading-tight">
             Premium Auto
             <span className="text-primary-orange block">Detailing</span>
           </h1>
 
-          {/* Subheading */}
-          <p className="text-2xl md:text-3xl text-gray-200 mb-10 animate-fade-in leading-relaxed font-medium">
+          {/* Subheading - 20-24px for subheadings */}
+          <p className="text-xl md:text-2xl text-gray-200 mb-12 animate-fade-in leading-relaxed font-medium max-w-4xl mx-auto">
             Professional ceramic coating and paint protection for motorcycles and cars
           </p>
 
           {/* Rating */}
-          <div className="flex items-center justify-center space-x-3 mb-10 animate-fade-in">
+          <div className="flex items-center justify-center space-x-4 mb-12 animate-fade-in">
             <div className="flex text-yellow-400">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-6 h-6 fill-current" />
@@ -128,7 +128,7 @@ const Hero: React.FC = () => {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 animate-fade-in mb-16">
+          <div className="flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-8 animate-fade-in mb-20">
             <Link
               to="/contact"
               className="bg-primary-orange text-white px-10 py-5 rounded-lg font-semibold text-lg hover:bg-orange-600 transition-all duration-300 hover:scale-105 flex items-center space-x-3"
@@ -145,17 +145,17 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 mt-20 pt-10 border-t border-gray-700">
+          <div className="grid grid-cols-3 gap-8 mt-20 pt-12 border-t border-gray-700">
             <div className="text-center">
-              <div className="text-4xl font-bold text-primary-orange mb-3">500+</div>
+              <div className="text-4xl font-bold text-primary-orange mb-4">500+</div>
               <div className="text-gray-200 text-lg">Vehicles Detailed</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-primary-orange mb-3">5+</div>
+              <div className="text-4xl font-bold text-primary-orange mb-4">5+</div>
               <div className="text-gray-200 text-lg">Years Experience</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-primary-orange mb-3">100%</div>
+              <div className="text-4xl font-bold text-primary-orange mb-4">100%</div>
               <div className="text-gray-200 text-lg">Satisfaction Rate</div>
             </div>
           </div>
