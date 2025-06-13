@@ -5,9 +5,9 @@ import { ArrowRight } from 'lucide-react';
 const PortfolioPreview: React.FC = () => {
   const portfolioItems = [
     {
-      title: 'BMW M3 Ceramic Coating',
+      title: 'Cherry Tiggo 8 Pro Graphen Coating',
       category: 'Car Detailing',
-      image: 'https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg?auto=compress&cs=tinysrgb&w=800'
+      image: 'https://scontent.fmnl17-7.fna.fbcdn.net/v/t39.30808-6/474081436_491085034013042_6623246810883504987_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_ohc=LsXHbzU648sQ7kNvwGbMlF7&_nc_oc=AdlwjMXA66Ye_oVgibJyO1HDLv95uy5PqpgH7RFLvLKDaAjwa2ukfBJZamjRQg5jHw0&_nc_zt=23&_nc_ht=scontent.fmnl17-7.fna&_nc_gid=ySWD9_CyTKuUBfh9GWl98w&oh=00_AfNGJgK0i008vLP1Wv1HBup1Y1T7JizgCbW91IrB6PjFiA&oe=6852677C'
     },
     {
       title: 'Harley Davidson Full Detail',
