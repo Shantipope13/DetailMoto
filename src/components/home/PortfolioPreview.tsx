@@ -1,13 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import HoverSlideshow from '../common/HoverSlideshow';
 
 const PortfolioPreview: React.FC = () => {
   const portfolioItems = [
     {
       title: 'Cherry Tiggo 8 Pro Graphen Coating',
       category: 'Car Detailing',
-      image: 'https://scontent.fmnl17-7.fna.fbcdn.net/v/t39.30808-6/474081436_491085034013042_6623246810883504987_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_ohc=LsXHbzU648sQ7kNvwGbMlF7&_nc_oc=AdlwjMXA66Ye_oVgibJyO1HDLv95uy5PqpgH7RFLvLKDaAjwa2ukfBJZamjRQg5jHw0&_nc_zt=23&_nc_ht=scontent.fmnl17-7.fna&_nc_gid=ySWD9_CyTKuUBfh9GWl98w&oh=00_AfNGJgK0i008vLP1Wv1HBup1Y1T7JizgCbW91IrB6PjFiA&oe=6852677C'
+      images: [
+        'https://scontent.fmnl17-1.fna.fbcdn.net/v/t39.30808-6/473619254_491085324013013_2313542684006765424_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=iyDEJmWq2LYQ7kNvwGvpJnq&_nc_oc=AdmoAbo0slrGFBSma4znMC3UnVmR5Ugf_rHfKT2CDO2pqDabTobrq0kG47wzhlWrXko&_nc_zt=23&_nc_ht=scontent.fmnl17-1.fna&_nc_gid=_6pJ0ukqz7541_NGIoUoyw&oh=00_AfN9taDfpaltFFSzcbbsWD6WLfqvRgOveGQrJjHWPKyfCw&oe=68527EA0',
+        'https://scontent.fmnl17-6.fna.fbcdn.net/v/t39.30808-6/473619760_491085044013041_2127470347314836496_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_ohc=sduSwD2deE0Q7kNvwHwCcTW&_nc_oc=Adkm2lY1Ag_X0UZd5LnGlNSVCUagaK-c9jJzz6t_dZNLupiSrUJCvvCUZk8tj5sQ8GY&_nc_zt=23&_nc_ht=scontent.fmnl17-6.fna&_nc_gid=WazbIBuA6a7so1Ayu4tYeA&oh=00_AfP5hvlUt5QBy1KmG4U75dOIlonRnTadEJLpsvT3DUhP0w&oe=68526E76',
+        'https://scontent.fmnl17-2.fna.fbcdn.net/v/t39.30808-6/473619637_491085120679700_386208669608973807_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=833d8c&_nc_ohc=mhqjKpL6InYQ7kNvwFu9m7j&_nc_oc=Admt5r_wi8suYK2TQjMlBvjO_vk2uTlYv7EYlLvxCDj9FD0irUj2HhJGBy6CfS78Mdw&_nc_zt=23&_nc_ht=scontent.fmnl17-2.fna&_nc_gid=-hAvAiCnKChrA97QIPooyw&oh=00_AfPFNCVFsJ39im3nipErjfdXEF47kYYoPwDaYsmc6zh_jA&oe=68526A68',
+        'https://scontent.fmnl17-7.fna.fbcdn.net/v/t39.30808-6/474171657_491085444013001_128505834387460378_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_ohc=MnbVvXAmBtMQ7kNvwHAk7CT&_nc_oc=Adkx65M67qGhS0Wx9ZPtR_3rZ_zrmO-O-sGVtyTfSoa5n1vMGhXKah6fhuvB-hRAXi4&_nc_zt=23&_nc_ht=scontent.fmnl17-7.fna&_nc_gid=Oi5cOLn8x4scu8e4D9vC5Q&oh=00_AfMa8DOrpGmd59j8FQs-nhnN4Z-I1uxuXlClefi-IX3bjA&oe=685270BC',
+        'https://scontent.fmnl17-8.fna.fbcdn.net/v/t39.30808-6/473620310_491085417346337_2758994469969624442_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=66Ba2WZsDHAQ7kNvwFbh5Qt&_nc_oc=AdkYWgJ4AmVrlvr4_m68iq0Jw6B2PcJn-8O5PXnmAYs72jGrKv3B0uHLv5gm321YPZ8&_nc_zt=23&_nc_ht=scontent.fmnl17-8.fna&_nc_gid=47yJLhwYgYvrUXo1oG_qSw&oh=00_AfMrSIPL1RAmWaUQPlRAtQWA0GzDBOE8H5aZgnUiJ94EsA&oe=68525805'
+      ]
     },
     {
       title: 'Harley Davidson Full Detail',
@@ -59,11 +66,19 @@ const PortfolioPreview: React.FC = () => {
               className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300"
             >
               <div className="aspect-square overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
+                {item.images ? (
+                  <HoverSlideshow
+                    images={item.images}
+                    title={item.title}
+                    className="w-full h-full"
+                  />
+                ) : (
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                )}
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="absolute bottom-6 left-6 right-6 text-white">
