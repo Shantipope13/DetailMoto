@@ -11,17 +11,22 @@ const HoverSlideshow: React.FC<HoverSlideshowProps> = ({
   images, 
   title, 
   className = '', 
-  interval = 800 
+  interval = 2500 // Changed to 2.5 seconds
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!isHovered || images.length <= 1) return;
 
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+        setIsTransitioning(false);
+      }, 150); // Brief transition delay for smooth effect
     }, interval);
 
     return () => clearInterval(timer);
@@ -34,11 +39,13 @@ const HoverSlideshow: React.FC<HoverSlideshowProps> = ({
     const handleMouseEnter = () => {
       setIsHovered(true);
       setCurrentIndex(0);
+      setIsTransitioning(false);
     };
 
     const handleMouseLeave = () => {
       setIsHovered(false);
       setCurrentIndex(0);
+      setIsTransitioning(false);
     };
 
     // Listen to the parent container's hover events
@@ -59,15 +66,29 @@ const HoverSlideshow: React.FC<HoverSlideshowProps> = ({
       ref={containerRef}
       className={`relative overflow-hidden ${className}`}
     >
-      <img
-        src={images[currentIndex]}
-        alt={`${title} - Image ${currentIndex + 1}`}
-        className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
-      />
+      {/* Image container with smooth transitions */}
+      <div className="relative w-full h-full">
+        {images.map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            alt={`${title} - Image ${index + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-all duration-500 ${
+              index === currentIndex 
+                ? `opacity-100 ${isTransitioning ? 'scale-105' : 'scale-100'}` 
+                : 'opacity-0'
+            }`}
+            style={{
+              transition: 'opacity 0.6s ease-in-out, transform 0.6s ease-in-out',
+              zIndex: index === currentIndex ? 1 : 0
+            }}
+          />
+        ))}
+      </div>
       
       {/* Image counter indicator */}
       {images.length > 1 && isHovered && (
-        <div className="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded text-xs font-medium">
+        <div className="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded text-xs font-medium transition-opacity duration-300">
           {currentIndex + 1} / {images.length}
         </div>
       )}
@@ -78,13 +99,25 @@ const HoverSlideshow: React.FC<HoverSlideshowProps> = ({
           {images.map((_, index) => (
             <div
               key={index}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              className={`w-2 h-2 rounded-full transition-all duration-500 ${
                 index === currentIndex 
-                  ? 'bg-primary-orange' 
-                  : 'bg-white/50'
+                  ? 'bg-primary-orange scale-125' 
+                  : 'bg-white/50 scale-100'
               }`}
             />
           ))}
+        </div>
+      )}
+      
+      {/* Progress bar for current image */}
+      {images.length > 1 && isHovered && (
+        <div className="absolute top-0 left-0 w-full h-1 bg-black/20">
+          <div 
+            className="h-full bg-primary-orange transition-all duration-300 ease-linear"
+            style={{
+              width: `${((currentIndex + 1) / images.length) * 100}%`
+            }}
+          />
         </div>
       )}
     </div>
