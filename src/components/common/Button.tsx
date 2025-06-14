@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -45,14 +46,26 @@ const Button: React.FC<ButtonProps> = ({
     className
   );
 
+  const buttonVariants = {
+    idle: { scale: 1 },
+    hover: { scale: 1.02 },
+    tap: { scale: 0.98 }
+  };
+
   return (
-    <button
+    <motion.button
+      variants={buttonVariants}
+      initial="idle"
+      whileHover={!disabled && !isLoading ? "hover" : "idle"}
+      whileTap={!disabled && !isLoading ? "tap" : "idle"}
       className={classes}
       disabled={disabled || isLoading}
       {...props}
     >
       {isLoading && (
-        <svg
+        <motion.svg
+          animate={{ rotate: 360 }}
+          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
           className="animate-spin -ml-1 mr-2 h-4 w-4"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -71,13 +84,13 @@ const Button: React.FC<ButtonProps> = ({
             fill="currentColor"
             d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
           />
-        </svg>
+        </motion.svg>
       )}
       {!isLoading && leftIcon && <span className="mr-2">{leftIcon}</span>}
       {children}
       {!isLoading && rightIcon && <span className="ml-2">{rightIcon}</span>}
-    </button>
+    </motion.button>
   );
 };
 
-export default Button; 
+export default Button;

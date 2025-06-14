@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScrollReveal } from '../components/ScrollReveal';
 import Hero from '../components/home/Hero';
 import ServicesOverview from '../components/home/ServicesOverview';
 import AboutSection from '../components/home/AboutSection';
@@ -12,13 +13,27 @@ const HomePage: React.FC = () => {
   return (
     <div className="pt-0">
       <Hero />
-      <ServicesOverview />
-      <AboutSection />
-      <BenefitsSection />
-      <PortfolioPreview />
-      <Testimonials />
-      <AppointmentPolicy />
-      <CallToAction />
+      <ScrollReveal>
+        <ServicesOverview />
+      </ScrollReveal>
+      <ScrollReveal delay={0.1}>
+        <AboutSection />
+      </ScrollReveal>
+      <ScrollReveal delay={0.2}>
+        <BenefitsSection />
+      </ScrollReveal>
+      <ScrollReveal delay={0.1}>
+        <PortfolioPreview />
+      </ScrollReveal>
+      <ScrollReveal delay={0.2}>
+        <Testimonials />
+      </ScrollReveal>
+      <ScrollReveal delay={0.1}>
+        <AppointmentPolicy />
+      </ScrollReveal>
+      <ScrollReveal delay={0.2}>
+        <CallToAction />
+      </ScrollReveal>
     </div>
   );
 };

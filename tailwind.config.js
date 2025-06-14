@@ -1,6 +1,31 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  safelist: [
+    // Dynamic classes for Framer Motion components
+    'border-primary-orange',
+    'border-blue-500',
+    'border-green-500',
+    'border-red-500',
+    'bg-primary-orange',
+    'bg-blue-500',
+    'bg-green-500',
+    'bg-red-500',
+    'border-t-primary-orange',
+    'border-t-blue-500',
+    'border-t-green-500',
+    'border-t-red-500',
+    // Grid column classes
+    'md:grid-cols-1',
+    'md:grid-cols-2',
+    'md:grid-cols-3',
+    'lg:grid-cols-1',
+    'lg:grid-cols-2',
+    'lg:grid-cols-3',
+    'lg:grid-cols-4',
+    'lg:grid-cols-5',
+    'lg:grid-cols-6'
+  ],
   theme: {
     extend: {
       fontFamily: {

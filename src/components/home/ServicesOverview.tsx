@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Bike, Car, Shield } from 'lucide-react';
+import { StaggeredGrid } from '../StaggeredGrid';
+import { ScrollReveal } from '../ScrollReveal';
 
 const ServicesOverview: React.FC = () => {
   const services = [
     {
+      id: 1,
       icon: <Bike className="w-12 h-12" />,
       title: 'Motorcycle Detailing & Ceramic Coating',
       description: 'Complete cleaning, polishing, and ceramic protection services specifically designed for motorcycles',
@@ -13,6 +16,7 @@ const ServicesOverview: React.FC = () => {
       link: '/services/motorcycle-detailing'
     },
     {
+      id: 2,
       icon: <Shield className="w-12 h-12" />,
       title: 'Paint Protection Film',
       description: 'Invisible protection against chips, scratches, and environmental damage',
@@ -21,6 +25,7 @@ const ServicesOverview: React.FC = () => {
       link: '/services/paint-protection-film'
     },
     {
+      id: 3,
       icon: <Car className="w-12 h-12" />,
       title: 'Car Detailing & Ceramic Coating',
       description: 'Advanced Artdeshine Graphene ceramic protection with long-lasting shine and durability',
@@ -34,33 +39,33 @@ const ServicesOverview: React.FC = () => {
     <section className="py-24 bg-gray-light">
       <div className="container mx-auto px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-20">
-          <div className="flex items-center justify-center mb-8">
-            <img 
-              src="/image.png" 
-              alt="DetailMoto Logo" 
-              className="w-16 h-16 rounded-full object-cover"
-            />
+        <ScrollReveal>
+          <div className="text-center mb-20">
+            <div className="flex items-center justify-center mb-8">
+              <img 
+                src="/image.png" 
+                alt="DetailMoto Logo" 
+                className="w-16 h-16 rounded-full object-cover"
+              />
+            </div>
+            
+            {/* Main Title - 36px+ for section titles */}
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-black mb-8 leading-tight">
+              Our Premium Services
+            </h2>
+            
+            {/* Subtitle - 20-24px for subheadings */}
+            <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+              Professional auto care services designed to protect and enhance your vehicle's appearance
+            </p>
           </div>
-          
-          {/* Main Title - 36px+ for section titles */}
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-black mb-8 leading-tight">
-            Our Premium Services
-          </h2>
-          
-          {/* Subtitle - 20-24px for subheadings */}
-          <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-            Professional auto care services designed to protect and enhance your vehicle's appearance
-          </p>
-        </div>
+        </ScrollReveal>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl p-8 lg:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group"
-            >
+        <StaggeredGrid
+          items={services}
+          renderItem={(service) => (
+            <div className="bg-white rounded-xl p-8 lg:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group">
               {/* Icon */}
               <div className="text-primary-orange mb-8 group-hover:scale-110 transition-transform duration-300">
                 {service.icon}
@@ -99,18 +104,23 @@ const ServicesOverview: React.FC = () => {
                 </Link>
               </div>
             </div>
-          ))}
-        </div>
+          )}
+          columns={3}
+          staggerDelay={0.1}
+          animationDirection="up"
+        />
 
         {/* CTA */}
-        <div className="text-center mt-20">
-          <Link
-            to="/services"
-            className="bg-primary-orange text-white px-10 py-5 rounded-lg font-semibold text-lg hover:bg-orange-600 transition-colors inline-flex items-center space-x-3"
-          >
-            <span>View All Services</span>
-          </Link>
-        </div>
+        <ScrollReveal delay={0.3}>
+          <div className="text-center mt-20">
+            <Link
+              to="/services"
+              className="bg-primary-orange text-white px-10 py-5 rounded-lg font-semibold text-lg hover:bg-orange-600 transition-colors inline-flex items-center space-x-3"
+            >
+              <span>View All Services</span>
+            </Link>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
