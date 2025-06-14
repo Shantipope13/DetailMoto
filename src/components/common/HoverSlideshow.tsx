@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 interface HoverSlideshowProps {
   images: string[];
@@ -15,6 +15,7 @@ const HoverSlideshow: React.FC<HoverSlideshowProps> = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!isHovered || images.length <= 1) return;
@@ -26,21 +27,37 @@ const HoverSlideshow: React.FC<HoverSlideshowProps> = ({
     return () => clearInterval(timer);
   }, [isHovered, images.length, interval]);
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-    setCurrentIndex(0);
-  };
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
 
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setCurrentIndex(0);
-  };
+    const handleMouseEnter = () => {
+      setIsHovered(true);
+      setCurrentIndex(0);
+    };
+
+    const handleMouseLeave = () => {
+      setIsHovered(false);
+      setCurrentIndex(0);
+    };
+
+    // Listen to the parent container's hover events
+    const parentContainer = container.closest('.group');
+    if (parentContainer) {
+      parentContainer.addEventListener('mouseenter', handleMouseEnter);
+      parentContainer.addEventListener('mouseleave', handleMouseLeave);
+      
+      return () => {
+        parentContainer.removeEventListener('mouseenter', handleMouseEnter);
+        parentContainer.removeEventListener('mouseleave', handleMouseLeave);
+      };
+    }
+  }, []);
 
   return (
     <div
+      ref={containerRef}
       className={`relative overflow-hidden ${className}`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
     >
       <img
         src={images[currentIndex]}
@@ -50,7 +67,7 @@ const HoverSlideshow: React.FC<HoverSlideshowProps> = ({
       
       {/* Image counter indicator */}
       {images.length > 1 && isHovered && (
-        <div className="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded text-xs">
+        <div className="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded text-xs font-medium">
           {currentIndex + 1} / {images.length}
         </div>
       )}
