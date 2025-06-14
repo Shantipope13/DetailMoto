@@ -5,6 +5,7 @@ import { ToastProvider } from './context/ToastContext';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import FloatingBookButton from './components/FloatingBookButton';
+import FloatingMessengerButton from './components/FloatingMessengerButton';
 import ErrorBoundary from './components/ErrorBoundary';
 
 // Lazy load pages
@@ -34,19 +35,19 @@ const structuredData = {
   "description": "Professional motorcycle detailing, ceramic coating, and paint protection film services.",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Your Street Address",
-    "addressLocality": "Your City",
-    "addressRegion": "Your State",
-    "postalCode": "Your Postal Code",
-    "addressCountry": "Your Country"
+    "streetAddress": "T.S. Cruz subd, Gladiola St, corner Sampaguita St",
+    "addressLocality": "Almanza, Las Pinas City",
+    "addressRegion": "Metro Manila",
+    "postalCode": "1750",
+    "addressCountry": "PH"
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": "Your Latitude",
-    "longitude": "Your Longitude"
+    "latitude": "14.4378",
+    "longitude": "120.9947"
   },
   "url": "https://detailmoto.com",
-  "telephone": "Your Phone Number",
+  "telephone": "0956 357 9715",
   "priceRange": "$$",
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
@@ -62,8 +63,8 @@ const structuredData = {
     "closes": "18:00"
   },
   "sameAs": [
-    "https://www.facebook.com/detailmoto",
-    "https://www.instagram.com/detailmoto"
+    "https://www.facebook.com/DetailMotoPh",
+    "https://m.me/DetailMotoPh"
   ]
 };
 
@@ -74,27 +75,27 @@ const App: React.FC = () => {
         <ToastProvider>
           <div className="min-h-screen bg-white font-montserrat">
             <Helmet>
-              <title>DetailMoto - Professional Motorcycle Detailing Services</title>
-              <meta name="description" content="Professional motorcycle detailing, ceramic coating, and paint protection film services. Book your appointment today!" />
+              <title>DetailMoto - Professional Auto Detailing & Ceramic Coating in Metro Manila</title>
+              <meta name="description" content="Professional auto detailing and Artdeshine ceramic coating services for motorcycles and cars in Las Piñas City, Metro Manila. Expert paint protection, PPF installation, and helmet coating services." />
               <meta name="viewport" content="width=device-width, initial-scale=1" />
               
               {/* Primary Meta Tags */}
-              <meta name="title" content="DetailMoto - Professional Motorcycle Detailing Services" />
-              <meta name="description" content="Expert motorcycle detailing, ceramic coating, and paint protection film services. Transform your ride with our premium care solutions." />
-              <meta name="keywords" content="motorcycle detailing, ceramic coating, paint protection film, bike detailing, motorcycle care, premium detailing" />
+              <meta name="title" content="DetailMoto - Professional Auto Detailing & Ceramic Coating in Metro Manila" />
+              <meta name="description" content="Professional auto detailing and Artdeshine ceramic coating services for motorcycles and cars in Las Piñas City, Metro Manila. Expert paint protection, PPF installation, and helmet coating services." />
+              <meta name="keywords" content="auto detailing, ceramic coating, paint protection film, motorcycle detailing, car detailing, Las Piñas, Metro Manila, Artdeshine, PPF, helmet coating" />
               
               {/* Open Graph / Facebook */}
               <meta property="og:type" content="website" />
               <meta property="og:url" content="https://detailmoto.com/" />
-              <meta property="og:title" content="DetailMoto - Professional Motorcycle Detailing Services" />
-              <meta property="og:description" content="Expert motorcycle detailing, ceramic coating, and paint protection film services. Transform your ride with our premium care solutions." />
+              <meta property="og:title" content="DetailMoto - Premium Auto Detailing & Ceramic Coating" />
+              <meta property="og:description" content="Professional auto detailing and ceramic coating services for motorcycles and cars in Metro Manila." />
               <meta property="og:image" content="/image.png" />
               
               {/* Twitter */}
               <meta property="twitter:card" content="summary_large_image" />
               <meta property="twitter:url" content="https://detailmoto.com/" />
-              <meta property="twitter:title" content="DetailMoto - Professional Motorcycle Detailing Services" />
-              <meta property="twitter:description" content="Expert motorcycle detailing, ceramic coating, and paint protection film services. Transform your ride with our premium care solutions." />
+              <meta property="twitter:title" content="DetailMoto - Premium Auto Detailing & Ceramic Coating" />
+              <meta property="twitter:description" content="Professional auto detailing and ceramic coating services for motorcycles and cars in Metro Manila." />
               <meta property="twitter:image" content="/image.png" />
               
               {/* Favicon */}
@@ -124,6 +125,7 @@ const App: React.FC = () => {
             </main>
             <Footer />
             <FloatingBookButton />
+            <FloatingMessengerButton />
           </div>
         </ToastProvider>
       </ErrorBoundary>

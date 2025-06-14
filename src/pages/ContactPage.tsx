@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, ChevronDown, ChevronUp } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, ChevronDown, ChevronUp, MessageSquare } from 'lucide-react';
 
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -118,6 +118,21 @@ const ContactPage: React.FC = () => {
                 </div>
 
                 <div className="flex items-start space-x-4">
+                  <MessageSquare className="w-6 h-6 text-primary-orange mt-1" />
+                  <div>
+                    <h3 className="font-semibold text-primary-black mb-1">Messenger</h3>
+                    <a 
+                      href="https://m.me/DetailMotoPh" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-gray-600 hover:text-primary-orange transition-colors"
+                    >
+                      Chat with us on Facebook Messenger
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
                   <Clock className="w-6 h-6 text-primary-orange mt-1" />
                   <div>
                     <h3 className="font-semibold text-primary-black mb-1">Hours</h3>
@@ -130,9 +145,9 @@ const ContactPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Social Links */}
+              {/* Social Links & Messenger CTA */}
               <div className="bg-gray-light rounded-lg p-6">
-                <h3 className="font-semibold text-primary-black mb-4">Follow Us</h3>
+                <h3 className="font-semibold text-primary-black mb-4">Connect With Us</h3>
                 <div className="space-y-3">
                   <a 
                     href="https://www.facebook.com/DetailMotoPh" 
@@ -141,6 +156,15 @@ const ContactPage: React.FC = () => {
                     className="flex items-center space-x-3 text-gray-600 hover:text-primary-orange transition-colors"
                   >
                     <span>Facebook - DetailMotoPh</span>
+                  </a>
+                  <a 
+                    href="https://m.me/DetailMotoPh" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-3 font-medium"
+                  >
+                    <MessageSquare className="w-5 h-5" />
+                    <span>Start Messenger Chat</span>
                   </a>
                   <a 
                     href="https://g.co/kgs/jYyPPZr" 
@@ -269,6 +293,20 @@ const ContactPage: React.FC = () => {
                   <Send className="w-5 h-5" />
                   <span>Send Message</span>
                 </button>
+
+                {/* Alternative Contact Methods */}
+                <div className="text-center pt-4 border-t border-gray-200">
+                  <p className="text-gray-600 mb-4">Prefer to chat directly?</p>
+                  <a
+                    href="https://m.me/DetailMotoPh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors inline-flex items-center space-x-2 font-medium"
+                  >
+                    <MessageSquare className="w-5 h-5" />
+                    <span>Message Us on Facebook</span>
+                  </a>
+                </div>
               </form>
             </div>
           </div>
