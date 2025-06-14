@@ -6,7 +6,7 @@ import HoverSlideshow from '../common/HoverSlideshow';
 const PortfolioPreview: React.FC = () => {
   const portfolioItems = [
     {
-      title: 'Cherry Tiggo 8 Pro Graphen Coating',
+      title: 'BMW M3 Ceramic Coating',
       category: 'Car Detailing',
       images: [
         'https://scontent.fmnl17-8.fna.fbcdn.net/v/t39.30808-6/473620310_491085417346337_2758994469969624442_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=66Ba2WZsDHAQ7kNvwFbh5Qt&_nc_oc=AdkYWgJ4AmVrlvr4_m68iq0Jw6B2PcJn-8O5PXnmAYs72jGrKv3B0uHLv5gm321YPZ8&_nc_zt=23&_nc_ht=scontent.fmnl17-8.fna&_nc_gid=REXbBbwTFzHvTJjzfC0Zzg&oh=00_AfO7o0b4DTlaRazauMxFXfWTaFHv9civuXrB6JMhnfdfkw&oe=68525805',
@@ -16,7 +16,7 @@ const PortfolioPreview: React.FC = () => {
       ]
     },
     {
-      title: 'Yamaha Aerox Ceramic Coated',
+      title: 'Harley Davidson Full Detail',
       category: 'Motorcycle',
       images: [
         'https://scontent.fcai21-3.fna.fbcdn.net/v/t39.30808-6/473248064_487300924391453_7186424736459821285_n.jpg?stp=dst-jpg_p960x960_tt6&_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=YRnRXKDzQeEQ7kNvwH_577x&_nc_oc=AdniSBBZIG8pfGic8-us_9JLPISejyo7yPhF5cp8XR8GSLPUk1j31T8XKtrtCz9F104&_nc_zt=23&_nc_ht=scontent.fcai21-3.fna&_nc_gid=CnngcZR_m3kkewR8dgL_2A&oh=00_AfPw8ZQIRQLymzFe2Yeuv1lhi7_VoOaD6U0Rn2iqSR8w_w&oe=68526E03',
