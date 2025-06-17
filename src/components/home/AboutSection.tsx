@@ -1,5 +1,28 @@
 import React from 'react';
-import { Award, Users, Clock } from 'lucide-react';
+import { Award, Users, Star, Search, Gem } from 'lucide-react';
+
+const values = [
+  {
+    icon: <Award className="w-10 h-10 text-primary-orange mb-2" aria-hidden="true" />,
+    title: 'Certified Installers',
+    description: 'Trained & certified professionals ensure top-quality results.'
+  },
+  {
+    icon: <Gem className="w-10 h-10 text-primary-orange mb-2" aria-hidden="true" />,
+    title: 'Premium Products',
+    description: 'We use only the finest brands for lasting protection and shine.'
+  },
+  {
+    icon: <Star className="w-10 h-10 text-primary-orange mb-2" aria-hidden="true" />,
+    title: 'Customer Satisfaction',
+    description: 'Hundreds of happy clients—your satisfaction is our priority.'
+  },
+  {
+    icon: <Search className="w-10 h-10 text-primary-orange mb-2" aria-hidden="true" />,
+    title: 'Attention to Detail',
+    description: 'We treat every vehicle as our own, with meticulous care.'
+  },
+];
 
 const AboutSection: React.FC = () => {
   return (
@@ -38,23 +61,22 @@ const AboutSection: React.FC = () => {
                 <div className="text-base lg:text-lg text-gray-600 font-medium">Happy Clients</div>
               </div>
               <div className="text-center">
-                <Clock className="w-12 h-12 text-primary-orange mx-auto mb-4" />
+                <Star className="w-12 h-12 text-primary-orange mx-auto mb-4" />
                 <div className="text-3xl lg:text-4xl font-bold text-primary-black mb-3">2</div>
                 <div className="text-base lg:text-lg text-gray-600 font-medium">Years Experience</div>
               </div>
             </div>
           </div>
 
-          {/* Image Gallery */}
-          <div className="grid grid-cols-2 gap-6 lg:gap-8">
-            <div className="space-y-6 lg:space-y-8">
-              <div className="h-56 lg:h-64 bg-gradient-to-br from-primary-orange to-orange-600 rounded-lg shadow-lg"></div>
-              <div className="h-40 lg:h-48 bg-gradient-to-br from-gray-300 to-gray-400 rounded-lg shadow-lg"></div>
-            </div>
-            <div className="space-y-6 lg:space-y-8 mt-10 lg:mt-12">
-              <div className="h-40 lg:h-48 bg-gradient-to-br from-gray-400 to-gray-500 rounded-lg shadow-lg"></div>
-              <div className="h-56 lg:h-64 bg-gradient-to-br from-primary-black to-gray-800 rounded-lg shadow-lg"></div>
-            </div>
+          {/* Values Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+            {values.map((value, idx) => (
+              <div key={idx} className="card flex flex-col items-center text-center p-8 bg-white rounded-xl shadow-lg h-full">
+                {value.icon}
+                <h3 className="font-bold text-lg mb-2 text-primary-black">{value.title}</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-300">{value.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
