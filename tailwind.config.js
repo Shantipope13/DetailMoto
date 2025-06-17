@@ -1,6 +1,10 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  darkMode: 'class',
   safelist: [
     // Dynamic classes for Framer Motion components
     'border-primary-orange',
@@ -28,14 +32,9 @@ export default {
   ],
   theme: {
     extend: {
-      fontFamily: {
-        'montserrat': ['Montserrat', 'sans-serif'],
-      },
       colors: {
-        primary: {
-          orange: '#FF5722',
-          black: '#1A1A1A',
-        },
+        'primary-orange': '#FF6B00',
+        'primary-black': '#1A1A1A',
         // State Colors
         success: '#4CAF50',
         warning: '#FF9800',
@@ -54,6 +53,9 @@ export default {
           dark: '#9E9E9E',
           charcoal: '#424242',
         }
+      },
+      fontFamily: {
+        'montserrat': ['Montserrat', 'sans-serif'],
       },
       lineHeight: {
         'relaxed': '1.75',
@@ -77,6 +79,7 @@ export default {
         'fade-in': 'fadeIn 0.6s ease-in-out',
         'slide-up': 'slideUp 0.8s ease-out',
         'bounce-gentle': 'bounceGentle 2s infinite',
+        'spin-slow': 'spin 3s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -91,8 +94,34 @@ export default {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
         }
-      }
+      },
+      transitionProperty: {
+        'height': 'height',
+        'spacing': 'margin, padding',
+      },
+      screens: {
+        'xs': '475px',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/aspect-ratio'),
+  ],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
+  variants: {
+    extend: {
+      backgroundColor: ['dark'],
+      textColor: ['dark'],
+      borderColor: ['dark'],
+      ringColor: ['dark'],
+      ringOffsetColor: ['dark'],
+      ringOffsetWidth: ['dark'],
+      ringWidth: ['dark'],
+      boxShadow: ['dark'],
+    },
+  },
 };

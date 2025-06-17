@@ -1,4 +1,4 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ToastProvider } from './context/ToastContext';
@@ -69,11 +69,21 @@ const structuredData = {
 };
 
 const App: React.FC = () => {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const savedMode = localStorage.getItem('darkMode');
+    return savedMode ? JSON.parse(savedMode) : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
+    document.documentElement.classList.toggle('dark', isDarkMode);
+  }, [isDarkMode]);
+
   return (
     <Router>
       <ErrorBoundary>
         <ToastProvider>
-          <div className="min-h-screen bg-white font-montserrat flex flex-col">
+          <div className={`min-h-screen bg-white dark:bg-gray-900 font-montserrat flex flex-col transition-colors duration-200`}>
             <Helmet>
               <title>DetailMoto - Professional Auto Detailing & Ceramic Coating in Metro Manila</title>
               <meta name="description" content="Professional auto detailing and Artdeshine ceramic coating services for motorcycles and cars in Las Piñas City, Metro Manila. Expert paint protection, PPF installation, and helmet coating services." />
@@ -102,13 +112,31 @@ const App: React.FC = () => {
               <link rel="icon" type="image/png" href="/favicon.png" />
               <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
               
+              {/* Font Loading */}
+              <link 
+                rel="preload" 
+                href="/fonts/montserrat.woff2" 
+                as="font" 
+                type="font/woff2" 
+                crossOrigin="anonymous"
+              />
+              
               {/* Structured Data */}
               <script type="application/ld+json">
                 {JSON.stringify(structuredData)}
               </script>
             </Helmet>
-            <Header />
-            <main className="flex-grow" role="main">
+
+            {/* Skip to Content Link */}
+            <a 
+              href="#main-content" 
+              className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary-orange text-white px-4 py-2 rounded-lg z-50"
+            >
+              Skip to content
+            </a>
+
+            <Header isDarkMode={isDarkMode} onDarkModeToggle={() => setIsDarkMode(!isDarkMode)} />
+            <main id="main-content" className="flex-grow" role="main">
               <Suspense fallback={<LoadingSpinner />}>
                 <Routes>
                   <Route path="/" element={<HomePage />} />

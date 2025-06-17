@@ -1,3 +1,116 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --scroll-behavior: smooth !important;
+    scroll-behavior: smooth;
+  }
+
+  /* Reduce motion if user prefers it */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Improve text rendering */
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Improve focus styles */
+  :focus-visible {
+    outline: 2px solid theme('colors.primary-orange');
+    outline-offset: 2px;
+  }
+
+  /* Improve tap targets on mobile */
+  @media (max-width: 640px) {
+    button, 
+    [role="button"],
+    a {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+
+  /* Improve color contrast */
+  .text-primary-black {
+    color: theme('colors.primary-black');
+  }
+
+  .text-primary-orange {
+    color: theme('colors.primary-orange');
+  }
+
+  /* Improve dark mode transitions */
+  .dark {
+    color-scheme: dark;
+  }
+
+  /* Improve image loading */
+  img {
+    content-visibility: auto;
+  }
+
+  /* Improve form elements */
+  input,
+  select,
+  textarea {
+    @apply rounded-lg border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white;
+  }
+
+  /* Improve button styles */
+  button {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2;
+  }
+}
+
+@layer components {
+  /* Improve link styles */
+  .link {
+    @apply text-primary-orange hover:text-orange-600 dark:text-orange-400 dark:hover:text-orange-300 transition-colors;
+  }
+
+  /* Improve card styles */
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6;
+  }
+
+  /* Improve button styles */
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply bg-primary-orange text-white hover:bg-orange-600 dark:bg-orange-600 dark:hover:bg-orange-700;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-200 text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600;
+  }
+}
+
+@layer utilities {
+  /* Improve text contrast */
+  .text-contrast {
+    @apply text-primary-black dark:text-white;
+  }
+
+  /* Improve focus styles */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2;
+  }
+
+  /* Improve touch targets */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+}

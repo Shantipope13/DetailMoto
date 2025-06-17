@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, Sun, Moon } from 'lucide-react';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  isDarkMode: boolean;
+  onDarkModeToggle: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ isDarkMode, onDarkModeToggle }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
@@ -25,10 +30,12 @@ const Header: React.FC = () => {
   const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
     isHomePage && !isScrolled
       ? 'bg-transparent'
-      : 'bg-white shadow-lg'
+      : 'bg-white dark:bg-gray-900 shadow-lg'
   }`;
 
-  const textColor = isHomePage && !isScrolled ? 'text-white' : 'text-primary-black';
+  const textColor = isHomePage && !isScrolled 
+    ? 'text-white' 
+    : 'text-primary-black dark:text-white';
 
   return (
     <header className={headerClasses} role="banner">
@@ -95,32 +102,60 @@ const Header: React.FC = () => {
               <Phone className="w-4 h-4" aria-hidden="true" />
               <span>Contact Us</span>
             </Link>
+
+            {/* Dark Mode Toggle */}
+            <button
+              onClick={onDarkModeToggle}
+              className={`p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 ${textColor}`}
+              aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              {isDarkMode ? (
+                <Sun className="w-5 h-5" aria-hidden="true" />
+              ) : (
+                <Moon className="w-5 h-5" aria-hidden="true" />
+              )}
+            </button>
           </nav>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`md:hidden ${textColor} p-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2`}
-            aria-expanded={isMenuOpen}
-            aria-controls="mobile-menu"
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-          >
-            {isMenuOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
-          </button>
+          <div className="flex items-center space-x-4 md:hidden">
+            {/* Dark Mode Toggle (Mobile) */}
+            <button
+              onClick={onDarkModeToggle}
+              className={`p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 ${textColor}`}
+              aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              {isDarkMode ? (
+                <Sun className="w-5 h-5" aria-hidden="true" />
+              ) : (
+                <Moon className="w-5 h-5" aria-hidden="true" />
+              )}
+            </button>
+
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className={`${textColor} p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2`}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            >
+              {isMenuOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div 
             id="mobile-menu"
-            className="md:hidden bg-white shadow-lg rounded-lg mt-2 py-4"
+            className="md:hidden bg-white dark:bg-gray-900 shadow-lg rounded-lg mt-2 py-4"
             role="navigation"
             aria-label="Mobile navigation"
           >
             <nav className="flex flex-col space-y-4 px-4">
               <Link
                 to="/"
-                className="text-primary-black hover:text-primary-orange transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 rounded-lg px-2 py-1"
+                className="text-primary-black dark:text-white hover:text-primary-orange transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 rounded-lg px-2 py-1"
                 onClick={() => setIsMenuOpen(false)}
                 aria-current={location.pathname === '/' ? 'page' : undefined}
               >
@@ -128,7 +163,7 @@ const Header: React.FC = () => {
               </Link>
               <Link
                 to="/services"
-                className="text-primary-black hover:text-primary-orange transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 rounded-lg px-2 py-1"
+                className="text-primary-black dark:text-white hover:text-primary-orange transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 rounded-lg px-2 py-1"
                 onClick={() => setIsMenuOpen(false)}
                 aria-current={location.pathname === '/services' ? 'page' : undefined}
               >
@@ -136,7 +171,7 @@ const Header: React.FC = () => {
               </Link>
               <Link
                 to="/about"
-                className="text-primary-black hover:text-primary-orange transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 rounded-lg px-2 py-1"
+                className="text-primary-black dark:text-white hover:text-primary-orange transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 rounded-lg px-2 py-1"
                 onClick={() => setIsMenuOpen(false)}
                 aria-current={location.pathname === '/about' ? 'page' : undefined}
               >
@@ -144,7 +179,7 @@ const Header: React.FC = () => {
               </Link>
               <Link
                 to="/gallery"
-                className="text-primary-black hover:text-primary-orange transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 rounded-lg px-2 py-1"
+                className="text-primary-black dark:text-white hover:text-primary-orange transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 rounded-lg px-2 py-1"
                 onClick={() => setIsMenuOpen(false)}
                 aria-current={location.pathname === '/gallery' ? 'page' : undefined}
               >
