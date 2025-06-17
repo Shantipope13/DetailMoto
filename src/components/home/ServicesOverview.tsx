@@ -11,7 +11,7 @@ const ServicesOverview: React.FC = () => {
       icon: <Bike className="w-12 h-12" />,
       title: 'Motorcycle Detailing & Ceramic Coating',
       description: 'Complete cleaning, polishing, and ceramic protection services specifically designed for motorcycles',
-      features: ['Engine degreasing', 'Chrome polishing', 'Ceramic coating application'],
+      features: ['Lasts up to 3 years', 'Engine degreasing', 'Water-repellent'],
       price: 'Starting at ₱1,500',
       link: '/services/motorcycle-detailing'
     },
@@ -20,7 +20,7 @@ const ServicesOverview: React.FC = () => {
       icon: <Shield className="w-12 h-12" />,
       title: 'Paint Protection Film',
       description: 'Invisible protection against chips, scratches, and environmental damage',
-      features: ['Self-healing properties', 'UV resistance', 'Clear finish'],
+      features: ['Self-healing', 'UV protection', 'Clear finish'],
       price: 'Starting at ₱8,000',
       link: '/services/paint-protection-film'
     },
@@ -29,7 +29,7 @@ const ServicesOverview: React.FC = () => {
       icon: <Car className="w-12 h-12" />,
       title: 'Car Detailing & Ceramic Coating',
       description: 'Advanced Artdeshine Graphene ceramic protection with long-lasting shine and durability',
-      features: ['Paint correction', '9H hardness coating', 'Up to 5-year warranty'],
+      features: ['Up to 5-year warranty', 'Paint correction', 'Gloss enhancement'],
       price: 'Starting at ₱15,000',
       link: '/services/ceramic-coating'
     }
@@ -61,54 +61,50 @@ const ServicesOverview: React.FC = () => {
           </div>
         </ScrollReveal>
 
-        {/* Services Grid */}
-        <StaggeredGrid
-          items={services}
-          renderItem={(service) => (
-            <div className="bg-white rounded-xl p-8 lg:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group">
+        {/* Services Grid - mobile: single column, gap-6, shadow-md */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service) => (
+            <Link
+              to={service.link}
+              key={service.id}
+              className="group bg-white rounded-xl p-8 lg:p-10 shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 flex flex-col h-full"
+              aria-label={service.title}
+            >
               {/* Icon */}
               <div className="text-primary-orange mb-8 group-hover:scale-110 transition-transform duration-300">
                 {service.icon}
               </div>
               
-              {/* Service Title - 24px for card titles */}
-              <h3 className="text-2xl lg:text-3xl font-bold text-primary-black mb-6 leading-tight">
+              {/* Service Title */}
+              <h3 className="text-2xl lg:text-3xl font-bold text-primary-black mb-4 leading-tight">
                 {service.title}
               </h3>
               
-              {/* Description - 16px for body text */}
-              <p className="text-base lg:text-lg text-gray-700 mb-8 leading-relaxed">
+              {/* Description */}
+              <p className="text-base lg:text-lg text-gray-700 mb-4 leading-relaxed">
                 {service.description}
               </p>
               
-              {/* Features List */}
-              <ul className="space-y-4 mb-10">
+              {/* Features List - visually distinct bullets */}
+              <ul className="space-y-2 mb-6">
                 {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="text-base text-gray-600 flex items-center leading-relaxed">
-                    <div className="w-2 h-2 bg-primary-orange rounded-full mr-4 flex-shrink-0"></div>
+                  <li key={featureIndex} className="flex items-center text-sm text-gray-600">
+                    <span className="w-2 h-2 bg-primary-orange rounded-full mr-3 flex-shrink-0"></span>
                     {feature}
                   </li>
                 ))}
               </ul>
               
-              {/* Pricing and CTA */}
-              <div className="border-t pt-8">
-                <div className="text-xl lg:text-2xl font-bold text-primary-orange mb-6">
+              {/* Pricing */}
+              <div className="mt-auto border-t pt-6">
+                <div className="text-xl lg:text-2xl font-bold text-primary-orange mb-2">
                   {service.price}
                 </div>
-                <Link
-                  to={service.link}
-                  className="text-primary-black font-semibold text-lg hover:text-primary-orange transition-colors inline-flex items-center"
-                >
-                  Learn More →
-                </Link>
+                <span className="text-primary-black font-semibold text-base group-hover:text-primary-orange transition-colors">Learn More →</span>
               </div>
-            </div>
-          )}
-          columns={3}
-          staggerDelay={0.1}
-          animationDirection="up"
-        />
+            </Link>
+          ))}
+        </div>
 
         {/* CTA */}
         <ScrollReveal delay={0.3}>
