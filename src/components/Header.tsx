@@ -17,6 +17,11 @@ const Header: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location]);
+
   const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
     isHomePage && !isScrolled
       ? 'bg-transparent'
@@ -27,56 +32,64 @@ const Header: React.FC = () => {
 
   return (
     <header className={headerClasses} role="banner">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3" aria-label="DetailMoto Home">
+          <Link 
+            to="/" 
+            className="flex items-center space-x-3 focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 rounded-lg p-1" 
+            aria-label="DetailMoto Home"
+          >
             <img 
               src="/image.png" 
               alt="DetailMoto Logo" 
-              className="w-10 h-10 rounded-full object-cover"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover"
               width="40"
               height="40"
+              loading="eager"
             />
             <div>
-              <h1 className={`text-2xl font-bold ${textColor}`}>DetailMoto</h1>
-              <p className={`text-sm ${textColor} opacity-80`}>Premium Auto Care</p>
+              <h1 className={`text-xl sm:text-2xl font-bold ${textColor}`}>DetailMoto</h1>
+              <p className={`text-xs sm:text-sm ${textColor} opacity-80`}>Premium Auto Care</p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8" aria-label="Main navigation">
+          <nav 
+            className="hidden md:flex items-center space-x-6 lg:space-x-8" 
+            aria-label="Main navigation"
+          >
             <Link
               to="/"
-              className={`${textColor} hover:text-primary-orange transition-colors font-medium`}
+              className={`${textColor} hover:text-primary-orange transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 rounded-lg px-2 py-1`}
               aria-current={location.pathname === '/' ? 'page' : undefined}
             >
               Home
             </Link>
             <Link
               to="/services"
-              className={`${textColor} hover:text-primary-orange transition-colors font-medium`}
+              className={`${textColor} hover:text-primary-orange transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 rounded-lg px-2 py-1`}
               aria-current={location.pathname === '/services' ? 'page' : undefined}
             >
               Services
             </Link>
             <Link
               to="/about"
-              className={`${textColor} hover:text-primary-orange transition-colors font-medium`}
+              className={`${textColor} hover:text-primary-orange transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 rounded-lg px-2 py-1`}
               aria-current={location.pathname === '/about' ? 'page' : undefined}
             >
               About
             </Link>
             <Link
               to="/gallery"
-              className={`${textColor} hover:text-primary-orange transition-colors font-medium`}
+              className={`${textColor} hover:text-primary-orange transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 rounded-lg px-2 py-1`}
               aria-current={location.pathname === '/gallery' ? 'page' : undefined}
             >
               Gallery
             </Link>
             <Link
               to="/contact"
-              className="bg-primary-orange text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium flex items-center space-x-2"
+              className="bg-primary-orange text-white px-4 sm:px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2"
               aria-label="Contact us"
             >
               <Phone className="w-4 h-4" aria-hidden="true" />
@@ -87,7 +100,7 @@ const Header: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`md:hidden ${textColor} p-2`}
+            className={`md:hidden ${textColor} p-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2`}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
@@ -107,7 +120,7 @@ const Header: React.FC = () => {
             <nav className="flex flex-col space-y-4 px-4">
               <Link
                 to="/"
-                className="text-primary-black hover:text-primary-orange transition-colors font-medium"
+                className="text-primary-black hover:text-primary-orange transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 rounded-lg px-2 py-1"
                 onClick={() => setIsMenuOpen(false)}
                 aria-current={location.pathname === '/' ? 'page' : undefined}
               >
@@ -115,7 +128,7 @@ const Header: React.FC = () => {
               </Link>
               <Link
                 to="/services"
-                className="text-primary-black hover:text-primary-orange transition-colors font-medium"
+                className="text-primary-black hover:text-primary-orange transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 rounded-lg px-2 py-1"
                 onClick={() => setIsMenuOpen(false)}
                 aria-current={location.pathname === '/services' ? 'page' : undefined}
               >
@@ -123,7 +136,7 @@ const Header: React.FC = () => {
               </Link>
               <Link
                 to="/about"
-                className="text-primary-black hover:text-primary-orange transition-colors font-medium"
+                className="text-primary-black hover:text-primary-orange transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 rounded-lg px-2 py-1"
                 onClick={() => setIsMenuOpen(false)}
                 aria-current={location.pathname === '/about' ? 'page' : undefined}
               >
@@ -131,7 +144,7 @@ const Header: React.FC = () => {
               </Link>
               <Link
                 to="/gallery"
-                className="text-primary-black hover:text-primary-orange transition-colors font-medium"
+                className="text-primary-black hover:text-primary-orange transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 rounded-lg px-2 py-1"
                 onClick={() => setIsMenuOpen(false)}
                 aria-current={location.pathname === '/gallery' ? 'page' : undefined}
               >
@@ -139,7 +152,7 @@ const Header: React.FC = () => {
               </Link>
               <Link
                 to="/contact"
-                className="bg-primary-orange text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium flex items-center justify-center space-x-2"
+                className="bg-primary-orange text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium flex items-center justify-center space-x-2 focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2"
                 onClick={() => setIsMenuOpen(false)}
                 aria-label="Contact us"
               >

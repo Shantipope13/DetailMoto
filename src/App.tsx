@@ -73,7 +73,7 @@ const App: React.FC = () => {
     <Router>
       <ErrorBoundary>
         <ToastProvider>
-          <div className="min-h-screen bg-white font-montserrat">
+          <div className="min-h-screen bg-white font-montserrat flex flex-col">
             <Helmet>
               <title>DetailMoto - Professional Auto Detailing & Ceramic Coating in Metro Manila</title>
               <meta name="description" content="Professional auto detailing and Artdeshine ceramic coating services for motorcycles and cars in Las Piñas City, Metro Manila. Expert paint protection, PPF installation, and helmet coating services." />
@@ -108,7 +108,7 @@ const App: React.FC = () => {
               </script>
             </Helmet>
             <Header />
-            <main>
+            <main className="flex-grow" role="main">
               <Suspense fallback={<LoadingSpinner />}>
                 <Routes>
                   <Route path="/" element={<HomePage />} />
