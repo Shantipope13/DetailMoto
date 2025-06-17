@@ -5,6 +5,18 @@ import { ArrowRight, Shield, Star } from 'lucide-react';
 const Hero: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-black via-gray-900 to-primary-black overflow-hidden">
+      {/* Subtle Background Video Animation */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover opacity-30 z-0 pointer-events-none"
+        aria-hidden="true"
+      >
+        <source src="/video/ceramic-water-beading.mp4" type="video/mp4" />
+        {/* Fallback for browsers that don't support video */}
+      </video>
       {/* Modern Geometric Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         {/* Large hexagonal grid pattern */}
@@ -111,8 +123,8 @@ const Hero: React.FC = () => {
             <span className="text-primary-orange block">Detailing</span>
           </h1>
 
-          {/* Trust Tagline */}
-          <p className="text-sm text-gray-400 mt-2 mb-6">Trusted by local car owners in Las Piñas & Metro Manila</p>
+          {/* Geo-targeted Trust Tagline */}
+          <p className="text-sm text-gray-400 mt-2 mb-6">Trusted by motorcycle and car owners across Las Piñas and Metro Manila.</p>
 
           {/* Subheading - spacing improved */}
           <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-10 animate-fade-in leading-relaxed font-medium max-w-4xl mx-auto">
@@ -145,7 +157,7 @@ const Hero: React.FC = () => {
             </div>
             <Link
               to="/services"
-              className="border-2 border-white text-white px-10 py-5 rounded-lg font-semibold text-lg hover:bg-white hover:text-primary-black transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2"
+              className="border-2 border-white text-white px-10 py-5 rounded-lg font-semibold text-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-orange focus:ring-offset-2 hover:bg-gray-100 hover:text-primary-black dark:hover:bg-gray-800"
               aria-label="View Services"
             >
               View Services
