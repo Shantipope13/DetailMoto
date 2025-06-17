@@ -4,7 +4,7 @@ import { ArrowRight, Shield, Star } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-black via-gray-900 to-primary-black overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-primary-black via-gray-900 to-gray-800 overflow-hidden">
       {/* Subtle Background Video Animation */}
       <video
         autoPlay
@@ -189,7 +189,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
         <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
           <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
         </div>
