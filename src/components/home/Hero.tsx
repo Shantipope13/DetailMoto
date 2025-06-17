@@ -111,10 +111,10 @@ const Hero: React.FC = () => {
 
       <div className="container mx-auto px-6 lg:px-8 text-center relative z-10">
         <div className="max-w-5xl mx-auto">
-          {/* Badge */}
-          <div className="inline-flex items-center space-x-3 bg-primary-orange/10 text-primary-orange px-6 py-3 rounded-full mb-6 animate-fade-in">
-            <Shield className="w-5 h-5" />
-            <span className="text-base font-medium">Certified Artdeshine Graphene Installer</span>
+          {/* Compact Trust Badge */}
+          <div className="inline-flex items-center space-x-2 bg-primary-orange/10 text-primary-orange px-3 py-1 rounded-full mb-4 animate-fade-in text-sm sm:text-base">
+            <Shield className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="font-medium">Certified Artdeshine Graphene Installer</span>
           </div>
 
           {/* Main Heading - mobile-first font size */}
@@ -185,13 +185,6 @@ const Hero: React.FC = () => {
               <div className="text-gray-200 text-lg">Satisfaction Rate</div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
-        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>
