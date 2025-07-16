@@ -123,6 +123,50 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
+      {/* How We Work Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-primary-black mb-4">
+              How We Work
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Our process ensures every vehicle receives the highest level of care and attention.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+            <div className="text-center">
+              <div className="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-primary-orange/10 rounded-full">
+                <Users className="w-10 h-10 text-primary-orange" />
+              </div>
+              <h3 className="text-lg font-bold text-primary-black mb-2">Consultation</h3>
+              <p className="text-gray-600">We listen to your needs and assess your vehicle to recommend the best solutions.</p>
+            </div>
+            <div className="text-center">
+              <div className="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-primary-orange/10 rounded-full">
+                <Shield className="w-10 h-10 text-primary-orange" />
+              </div>
+              <h3 className="text-lg font-bold text-primary-black mb-2">Preparation</h3>
+              <p className="text-gray-600">Thorough cleaning and surface prep to ensure optimal results for every service.</p>
+            </div>
+            <div className="text-center">
+              <div className="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-primary-orange/10 rounded-full">
+                <Award className="w-10 h-10 text-primary-orange" />
+              </div>
+              <h3 className="text-lg font-bold text-primary-black mb-2">Expert Service</h3>
+              <p className="text-gray-600">Certified technicians apply advanced techniques and premium products.</p>
+            </div>
+            <div className="text-center">
+              <div className="w-20 h-20 mx-auto mb-6 flex items-center justify-center bg-primary-orange/10 rounded-full">
+                <Heart className="w-10 h-10 text-primary-orange" />
+              </div>
+              <h3 className="text-lg font-bold text-primary-black mb-2">Final Touch & Care</h3>
+              <p className="text-gray-600">We review every detail and provide aftercare tips for lasting protection and shine.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Team Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
