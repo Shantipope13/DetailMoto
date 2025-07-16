@@ -35,18 +35,18 @@ const FloatingMessengerButton: React.FC = () => {
 
   return (
     <a
-      href="https://m.me/DetailMotoPh"
+      href="https://www.facebook.com/DetailMotoPh"
       target="_blank"
       rel="noopener noreferrer"
-      className={`fixed bottom-24 right-6 bg-blue-600 text-white p-4 rounded-full shadow-2xl hover:bg-blue-700 transition-all duration-300 hover:scale-110 z-40 ${
+      className={`fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-2xl hover:bg-blue-700 transition-all duration-300 hover:scale-110 z-40 ${
         isAnimating ? 'animate-pulse' : ''
       } ${isVisible ? 'translate-y-0' : 'translate-y-32'}`}
       role="button"
-      aria-label="Chat with us on Messenger"
-      title="Chat with us on Messenger"
+      aria-label="Visit our Facebook page"
+      title="Visit our Facebook page"
     >
       <MessageSquare className="w-6 h-6" aria-hidden="true" />
-      <span className="sr-only">Chat with us on Messenger</span>
+      <span className="sr-only">Visit our Facebook page</span>
     </a>
   );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Bike, Car, Shield, Check, Star, Calendar, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ServiceComparison from '../components/services/ServiceComparison';
 
 const ServicesPage: React.FC = () => {
   const services = [
@@ -242,6 +243,9 @@ const ServicesPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Service Comparison */}
+      <ServiceComparison />
 
       {/* CTA Section */}
       <section className="py-20 bg-primary-orange text-white">

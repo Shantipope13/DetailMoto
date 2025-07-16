@@ -60,7 +60,7 @@ const Testimonials: React.FC = () => {
         {/* Testimonials Grid */}
         <StaggeredGrid
           items={testimonials}
-          renderItem={(testimonial) => (
+          renderItem={(testimonial: typeof testimonials[0]) => (
             <div className="bg-gray-light rounded-xl p-10 lg:p-12 shadow-lg hover:shadow-xl transition-all duration-300 relative">
               <Quote className="w-12 h-12 text-primary-orange mb-8" />
               

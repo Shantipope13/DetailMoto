@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Bike, Car, Shield } from 'lucide-react';
-import { StaggeredGrid } from '../StaggeredGrid';
 import { ScrollReveal } from '../ScrollReveal';
 
 const ServicesOverview: React.FC = () => {

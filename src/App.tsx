@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { ToastProvider } from './context/ToastContext';
 import Header from './components/Header';
+import Breadcrumb from './components/Breadcrumb';
 import Footer from './components/Footer';
-import FloatingBookButton from './components/FloatingBookButton';
 import FloatingMessengerButton from './components/FloatingMessengerButton';
 import ErrorBoundary from './components/ErrorBoundary';
 
@@ -136,6 +136,7 @@ const App: React.FC = () => {
             </a>
 
             <Header isDarkMode={isDarkMode} onDarkModeToggle={() => setIsDarkMode(!isDarkMode)} />
+            <Breadcrumb />
             <main id="main-content" className="flex-grow" role="main">
               <Suspense fallback={<LoadingSpinner />}>
                 <Routes>
@@ -152,7 +153,6 @@ const App: React.FC = () => {
               </Suspense>
             </main>
             <Footer />
-            <FloatingBookButton />
             <FloatingMessengerButton />
           </div>
         </ToastProvider>

@@ -4,9 +4,19 @@ import Button from '../common/Button';
 import { useToast } from '../../context/ToastContext';
 import { Service } from '../../types';
 
+interface BookingData {
+  serviceId: string;
+  date: string;
+  time: string;
+  name: string;
+  email: string;
+  phone: string;
+  notes: string;
+}
+
 interface BookingFormProps {
   services: Service[];
-  onSubmit: (bookingData: any) => Promise<void>;
+  onSubmit: (bookingData: BookingData) => Promise<void>;
 }
 
 const BookingForm: React.FC<BookingFormProps> = ({ services, onSubmit }) => {
@@ -28,7 +38,7 @@ const BookingForm: React.FC<BookingFormProps> = ({ services, onSubmit }) => {
     phone: (value) => !value ? 'Phone number is required' : undefined
   });
 
-  const handleFormSubmit = async (formData: any) => {
+  const handleFormSubmit = async (formData: BookingData) => {
     try {
       await onSubmit(formData);
       showToast('Booking submitted successfully!', 'success');

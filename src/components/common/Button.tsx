@@ -2,13 +2,19 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps {
+  children: React.ReactNode;
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   size?: 'sm' | 'md' | 'lg';
   isLoading?: boolean;
   fullWidth?: boolean;
   leftIcon?: React.ReactNode;
   rightIcon?: React.ReactNode;
+  className?: string;
+  disabled?: boolean;
+  type?: 'button' | 'submit' | 'reset';
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  'aria-label'?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -21,7 +27,9 @@ const Button: React.FC<ButtonProps> = ({
   rightIcon,
   className,
   disabled,
-  ...props
+  type = 'button',
+  onClick,
+  'aria-label': ariaLabel
 }) => {
   const baseStyles = 'inline-flex items-center justify-center rounded-md font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none';
   
@@ -60,7 +68,9 @@ const Button: React.FC<ButtonProps> = ({
       whileTap={!disabled && !isLoading ? "tap" : "idle"}
       className={classes}
       disabled={disabled || isLoading}
-      {...props}
+      type={type}
+      onClick={onClick}
+      aria-label={ariaLabel}
     >
       {isLoading && (
         <motion.svg

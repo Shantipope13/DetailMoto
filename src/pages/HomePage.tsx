@@ -8,10 +8,15 @@ import PortfolioPreview from '../components/home/PortfolioPreview';
 import Testimonials from '../components/home/Testimonials';
 import AppointmentPolicy from '../components/home/AppointmentPolicy';
 import CallToAction from '../components/home/CallToAction';
+import GallerySection from '../components/home/GallerySection';
+import ServiceAvailability from '../components/common/ServiceAvailability';
+import SocialProofTicker from '../components/common/SocialProofTicker';
 
 const HomePage: React.FC = () => {
   return (
     <div className="pt-0">
+      <ServiceAvailability />
+      <SocialProofTicker />
       <Hero />
       <ScrollReveal>
         <ServicesOverview />
@@ -26,6 +31,9 @@ const HomePage: React.FC = () => {
         <PortfolioPreview />
       </ScrollReveal>
       <ScrollReveal delay={0.2}>
+        <GallerySection />
+      </ScrollReveal>
+      <ScrollReveal delay={0.1}>
         <Testimonials />
       </ScrollReveal>
       <ScrollReveal delay={0.1}>

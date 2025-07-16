@@ -8,7 +8,7 @@ interface FormErrors {
   [key: string]: string;
 }
 
-export const useForm = <T extends Record<string, any>>(initialValues: T, validationRules?: ValidationRules) => {
+export const useForm = <T extends Record<string, string>>(initialValues: T, validationRules?: ValidationRules) => {
   const [values, setValues] = useState<T>(initialValues);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
